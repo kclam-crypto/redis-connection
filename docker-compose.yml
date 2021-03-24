@@ -1,0 +1,7 @@
+version: "3"
+services:
+  rc:
+    build: .
+    container_name: rc
+    working_dir: /app
+    command: sleep infinity
