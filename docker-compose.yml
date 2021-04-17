@@ -1,7 +1,25 @@
 version: "3"
 services:
-  rc:
+  redis-connection:
     build: .
-    container_name: rc
+    container_name: redis-connection
     working_dir: /app
-    command: sleep infinity
+    command: 
+      - bash
+      - -c
+      - while true; do date; sleep 60; done
+  redis:
+    container_name: redis
+    image: redis:6.0-alpine
+    command: redis-server "/usr/local/etc/redis/redis-6.conf"
+    expose:
+      - "6379"
+    volumes:
+      - ./conf:/usr/local/etc/redis
+  redis-cli:
+    image: redis:6.0-buster
+    container_name: redis-cli
+    command:
+      - bash
+      - -c
+      - while true; do date; sleep 60; done

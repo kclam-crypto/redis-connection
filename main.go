@@ -35,7 +35,7 @@ func main() {
 	fmt.Print("GET a: ")
 	v, err := c.Do("GET", "a")
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("\n%s\n", err.Error())
 	} else {
 		fmt.Printf("%s\n", string(v.([]byte)))
 	}
