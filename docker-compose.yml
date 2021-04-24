@@ -2,6 +2,7 @@ version: "3"
 services:
   redis-connection:
     build: .
+    image: ${repository}:redis-connection-1.3-alpine
     container_name: redis-connection
     working_dir: /app
     command: 

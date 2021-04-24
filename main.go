@@ -18,7 +18,7 @@ func main() {
 	c, err := redis.Dial("tcp", url+":6379", redis.DialUseTLS(true), redis.DialUsername(username), redis.DialPassword(password))
 	if err != nil {
 		fmt.Println(err.Error())
-		if strings.Contains(err.Error(), "x509: certificate is valid") {
+		if strings.Contains(err.Error(), "x509: certificate") {
 			fmt.Println("Skip cert verfication")
 			c, err = redis.Dial("tcp", url+":6379", redis.DialUseTLS(true), redis.DialTLSSkipVerify(true), redis.DialUsername(username), redis.DialPassword(password))
 			if err != nil {
